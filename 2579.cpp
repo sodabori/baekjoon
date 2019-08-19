@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <climits>
 #define STAIR_NUMBER 300
 #define MAX_SCORE 10000
 
@@ -6,9 +7,12 @@ int stairs[STAIR_NUMBER];
 int max_scores[2][STAIR_NUMBER];
 
 int stair_score(int n, bool use_one) {
-	int cd1 = 0, cd2 = 0, max_cd = 0;
+	int cd1 = 0, cd2 = 0, ss1 = 0, ss2 = 0;
 
-	if (n <= 0) {
+	if (n < 0)
+		return INT_MIN;
+
+	if (n == 0) {
 		max_scores[use_one][0] = stairs[0];
 		return stairs[0];
 	}
