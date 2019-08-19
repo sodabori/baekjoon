@@ -10,7 +10,7 @@ int stair_score(int n, bool use_one) {
 	int cd1 = 0, cd2 = 0, ss1 = 0, ss2 = 0;
 
 	if (n < 0)
-		return INT_MIN;
+		return 0;
 
 	if (n == 0) {
 		max_scores[use_one][0] = stairs[0];
