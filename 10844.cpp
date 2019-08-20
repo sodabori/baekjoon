@@ -15,7 +15,6 @@ long number_count(int cur, int n) {
 	if (counts[cur][n] != 0)
 		return counts[cur][n];
 
-	printf("cur : %d, n : %d\n", cur, n);
 	cd1 = number_count(cur + 1, n - 1) % DIVIDER;
 	cd2 = number_count(cur - 1, n - 1) % DIVIDER;
 
