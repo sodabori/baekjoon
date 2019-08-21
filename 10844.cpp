@@ -2,10 +2,10 @@
 #define MAX_N 100
 #define DIVIDER 1000000000
 
-long counts[10][MAX_N + 1];
+long long counts[10][MAX_N + 1];
 
-long number_count(int cur, int n) {
-	long cd1, cd2;
+long long number_count(int cur, int n) {
+	long long cd1, cd2;
 	if (cur < 0 || cur > 9)
 		return 0;
 
@@ -28,12 +28,12 @@ long number_count(int cur, int n) {
 
 int main() {
 	int n;
-	long sum = 0;
+	long long sum = 0;
 
 	scanf("%d", &n);
 	for (int i = 1; i < 10; i++)
 		sum += number_count(i, n - 1);
-	printf("%ld\n", sum);
+	printf("%lld\n", sum);
 
 	return 0;
 }
