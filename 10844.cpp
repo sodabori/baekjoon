@@ -2,7 +2,7 @@
 #define MAX_N 100
 #define DIVIDER 1000000000
 
-long counts[10][MAX_N];
+long counts[10][MAX_N + 1];
 
 long number_count(int cur, int n) {
 	long cd1, cd2;
