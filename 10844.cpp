@@ -12,17 +12,14 @@ long number_count(int cur, int n) {
 	if (n == 0)
 		return 1;
 
-	if (counts[cur][n] != 0) {
-		printf("Use Cache!!!\n");
+	if (counts[cur][n] != 0)
 		return counts[cur][n];
-	}
 
 	if (cur == 9)
 		cd1 = 0;
 	else {
 		cd1 = number_count(cur + 1, n - 1) % DIVIDER;
 		counts[cur + 1][n - 1] = cd1;
-		printf("(%d, %d) -> (%d, %d)\n", cur, n, cur + 1, n - 1);
 	}
 
 	if (cur == 0)
@@ -30,7 +27,6 @@ long number_count(int cur, int n) {
 	else {
 		cd2 = number_count(cur - 1, n - 1) % DIVIDER;
 		counts[cur - 1][n - 1] = cd2;
-		printf("(%d, %d) -> (%d, %d)\n", cur, n, cur - 1, n - 1);
 	}
 
 	return (cd1 + cd2) % DIVIDER;
