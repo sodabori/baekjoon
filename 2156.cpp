@@ -6,7 +6,8 @@ int wine[MAX_N];
 int max_wines[2][MAX_N];
 
 int max_wine(int n, bool use_one) {
-	int cd1 = 0, cd2 = 0;
+	int max = INT_MIN;
+	int cd[3] = {0};
 
 	if (n < 0)
 		return 0;
@@ -18,11 +19,16 @@ int max_wine(int n, bool use_one) {
 		return max_wines[use_one][n];
 
 	if (!use_one)
-		cd1 = wine[n] + max_wine(n - 1, true);
+		cd[0] = wine[n] + max_wine(n - 1, true);
 	
-	cd2 = wine[n] + max_wine(n - 2, false);
+	cd[1] = wine[n] + max_wine(n - 2, false);
+	cd[2] = wine[n] + max_wine(n - 3, false);
 
-	max_wines[use_one][n] = (cd1 > cd2) ? cd1 : cd2;
+	for (int i = 0; i < 3; i++)
+		if (cd[i] > max)
+			max = cd[i];
+
+	max_wines[use_one][n] = max;
 
 	return max_wines[use_one][n];
 }
