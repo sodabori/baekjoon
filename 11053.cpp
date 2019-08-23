@@ -35,12 +35,10 @@ int main() {
 		scanf("%d", &a[i]);
 
 	for (int i = 0; i < n; i++) {
-		for (int j = i; j < n; j++) {
-			tmp = long_sequence(i, j);
+		tmp = long_sequence(0, i);
 
-			if (tmp > max)
-				max = tmp;
-		}
+		if (tmp > max)
+			max = tmp;
 	}
 
 	printf("%d\n", max);
