@@ -6,8 +6,12 @@ int count[MAX_N];
 
 int long_sequence(int start, int end) {
 	int len = 1, max = 1;
+
 	if (start == end)
 		return 1;
+
+	if (count[start] != 1)
+		return count[start];
 
 	for (int i = start + 1; i <= end; i++) {
 		if (a[start] < a[i]) {
