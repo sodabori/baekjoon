@@ -1,44 +1,43 @@
 #include <cstdio>
 #define MAX_N 1000
 
-int count[MAX_N][MAX_N];
 int a[MAX_N];
+int count[MAX_N];
 
 int long_sequence(int start, int end) {
-	int len = 0, max = 0;
-
+	int len = 1, max = 1;
 	if (start == end)
 		return 1;
 
-	if (count[start][end] != 0)
-		return count[start][end];
-
-	for (int i = end - 1; i >= start; i--) {
-		if (a[i] < a[end]) {
-			len = 1 + long_sequence(start, i);
+	for (int i = start + 1; i <= end; i++) {
+		if (a[start] < a[i]) {
+			len = 1 + long_sequence(i, end);
 
 			if (len > max)
 				max = len;
 		}
 	}
 
-	count[start][end] = max;
+	count[start] = max;
 	return max;
 }
 
+
 int main() {
-	int n, max = 0, tmp;
+	int n, len = 1, max = 1;
 
 	scanf("%d", &n);
 
 	for (int i = 0; i < n; i++)
 		scanf("%d", &a[i]);
 
-	for (int i = 0; i < n; i++) {
-		tmp = long_sequence(0, i);
+	for (int i = 0; i < n; i++)
+			count[i] = 1;
 
-		if (tmp > max)
-			max = tmp;
+	for (int i = 0; i < n; i++) {
+		len = long_sequence(i, n - 1);
+		if (len > max)
+			max = len;
 	}
 
 	printf("%d\n", max);
