@@ -8,7 +8,7 @@ int lis(void) {
 	int max = 1;
 
 	for (int i = 0; i < MAX_N; i++) {
-		if (count[i] == 0)
+		if (a[i] != 0 && count[i] == 0)
 			count[i] = 1;
 
 		for (int j = i; j < MAX_N; j++) {
