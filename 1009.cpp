@@ -6,7 +6,7 @@ int computer(int a, int b) {
 	for (int i = 1; i < b; i++)
 		tmp = (tmp * a) % 10;
 
-	return tmp % 10;
+	return (tmp % 10 == 0) ? 10 : tmp % 10;
 }
 
 int main() {
